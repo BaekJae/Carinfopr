@@ -3,16 +3,12 @@
   <div id="register">
     <h1>LOGIN</h1>
     <form>
-      <div id="login">
-        <input id="email" name="email" type="email" placeholder="이메일"><br>
-        <input id="pass" name="pass" type="password" placeholder="비밀번호"><br>
+      <div id="Login">
+        <input id="email" v-model="user.userid" type="email" placeholder="이메일"><br>
+        <input id="pass" v-model="user.password" type="password" placeholder="비밀번호"><br>
       </div>
-      <button type="submit">로그인</button> <br>
       <div class="blank2"></div>
-      <div class="checkbox-area">
-        <input id="keep_login" name="keep_login" type="checkbox" value="Y">
-        <label for="keep_login">로그인 상태 유지</label><br>
-      </div>
+      <button @click.prevent="login">로그인</button> <br>
       <div class="blank2"></div>
       <div class="align-left">
         <router-link to="/register">회원가입</router-link>
@@ -27,7 +23,31 @@
 
 <script>
 export default {
-  name: "login"
+  name: "login",
+  data: function () {
+    return {
+      user: {
+        userid: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    login: function (event) {
+      let res = this.axios.post('http://localhost:8081/api/users/login', {
+        user: this.user
+      }).then((res)=>{
+        console.log(res);
+        this.$store.state.currentUserinfo.name = res.data.d.name;
+        this.$store.state.currentUserinfo.car = res.data.d.car;
+        this.$store.state.currentUserinfo.drivedistance = res.data.d.drivedistance;
+        this.$store.commit('Changestate');
+        this.$router.push({
+          path: '/mycar'
+        });
+      })
+    }
+  }
 }
 </script>
 

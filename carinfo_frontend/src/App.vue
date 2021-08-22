@@ -4,8 +4,9 @@
       <router-link to="/home"><h1>Carinfo</h1></router-link>
     </div>
     <div id="userinfo">
-      <router-link to="/login">Login</router-link>
-      <router-link to="/register">register</router-link>
+      <h3 v-if="this.$store.state.Login">반갑습니다. {{this.$store.state.currentUserinfo.name}}님</h3>
+      <router-link v-if="!this.$store.state.Login" to="/login">Login</router-link>
+      <router-link v-if="!this.$store.state.Login" to="/register">register</router-link>
     </div>
   </header>
   <nav id="menu">

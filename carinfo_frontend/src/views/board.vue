@@ -11,7 +11,7 @@
       </thead>
       <!--게시글 최대 8개-->
       <tbody>
-        <tr class="news_th">
+         <tr class="news_th">
           <td class="writing">
             <router-link to="/read">안녕하세요. 첫글입니다.</router-link>
           </td>
@@ -125,14 +125,24 @@
         </tr>
       </tbody>
     </table>
-    &lt; 1 2 3 &gt;
+    <div>
+      &lt; 1 2 3 &gt;
+    </div>
+    <div class="write">
+      <button ><a href="/writing">글쓰기</a></button>
+    </div>
     <div class="blank"></div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-  name: "board"
+  name: "board",
+  /*data : {
+    res : this.axios.get('http://localhost:8081/list'),
+  },*/
 }
 </script>
 
@@ -163,5 +173,17 @@ table > tbody > th,td{
 }
 .writing{
   text-align: left;
+}
+.write{
+  margin-left:75%;
+}
+button{
+  width:80px;
+  height:30px;
+  border:2px solid lightblue;
+  border-radius: 5px;
+  background-color: ivory;
+  color:lightblue;
+  margin-right:50px;
 }
 </style>

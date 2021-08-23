@@ -85,7 +85,6 @@ export default {
     }
   },
   mounted() {
-    alert(this.$store.state.currentUserinfo.drivedistance);
     this.checkLogin();
     this.updateCanvas();
   }

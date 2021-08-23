@@ -129,7 +129,7 @@
       &lt; 1 2 3 &gt;
     </div>
     <div class="write">
-      <button ><a href="/writing">글쓰기</a></button>
+      <router-link class="button" to="/writing" tag="button">&nbsp;&nbsp;&nbsp;&nbsp;글쓰기&nbsp;&nbsp;&nbsp;&nbsp;</router-link>
     </div>
     <div class="blank"></div>
   </div>
@@ -177,8 +177,8 @@ table > tbody > th,td{
 .write{
   margin-left:75%;
 }
-button{
-  width:80px;
+.button{
+  width:100px;
   height:30px;
   border:2px solid lightblue;
   border-radius: 5px;
